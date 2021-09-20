@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+wget https://github.com/Requarks/wiki/releases/download/2.5.201/wiki-js.tar.gz
+tar xzf wiki-js.tar.gz -C .
+
 DB_HOST=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r '.database[0].host')
 DB_PORT=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r '.database[0].port')
 DB_USERNAME=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r '.database[0].username')

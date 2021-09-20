@@ -46,8 +46,4 @@ mounts:
 hooks:
   build: |
     set -e
-    wget https://github.com/Requarks/wiki/releases/download/2.5.201/wiki-js.tar.gz
-    tar xzf wiki-js.tar.gz -C .
-  deploy: |
-    set -e
-    sh .platform.deploy.sh
+    sh .platform.build.sh

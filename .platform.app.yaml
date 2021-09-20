@@ -7,12 +7,7 @@
 name: app
 
 # The runtime the application uses.
-type: nodejs:14
-
-# Build dependencies. 
-dependencies:
-    nodejs:
-        yarn: "1.22.10"
+type: nodejs:16
 
 # The relationships of the application with services or other applications.
 #
@@ -20,34 +15,35 @@ dependencies:
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
-  database: "dbpostgres:postgresql"
+  database: "pg:postgresql"
 
 # The configuration of app when it is exposed to the web.
 web:
   commands:
-   start: "cd wiki && node server"
+    start: |
+      set -e
+      node server
 
 # The size of the persistent disk of the application (in MB).
 disk: 4000
 
 mounts:
-    'wiki/data':
-        source: local
-        source_path: data
-    'wiki/logs':
-        source: local
-        source_path: logs
-    'wiki/repo':
-        source: local
-        source_path: repo
-    'export':
-        source: local
-        source_path: repo
+  'data':
+    source: local
+    source_path: data
+  'logs':
+    source: local
+    source_path: logs
+  'repo':
+    source: local
+    source_path: repo
+  'export':
+    source: local
+    source_path: repo
 
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-    build: |
-        wget https://github.com/Requarks/wiki/releases/download/2.5.201/wiki-js.tar.gz
-        tar xzf wiki-js.tar.gz -C ./wiki
-        mv config.yml ./wiki
+  build: |
+    wget https://github.com/Requarks/wiki/releases/download/2.5.201/wiki-js.tar.gz
+    tar xzf wiki-js.tar.gz -C .

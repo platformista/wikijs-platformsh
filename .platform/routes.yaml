@@ -4,8 +4,8 @@
 # to be processed by Platform.sh.
 
 "https://{default}/":
-    type: upstream
-    upstream: "app:http"
-    cache:
-      enabled: false
-      cookies: ['*']
+  type: upstream
+  upstream: "app:http"
+  cache:
+    enabled: false
+    cookies: [ '*' ]

@@ -50,6 +50,7 @@ hooks:
   build: |
     set -e
     ln -s config/config.yml config.yml
+    source .version
     wget --quiet -c https://github.com/Requarks/wiki/releases/download/${WIKIJS_VERSION}/wiki-js.tar.gz -O - | tar -xz
   deploy: |
     set -e

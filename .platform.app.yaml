@@ -19,7 +19,7 @@ relationships:
 
 variables:
   env:
-    WIKIJS_VERSION: "2.5.201"
+    WIKIJS_VERSION: "2.5.214"
 
 # The configuration of app when it is exposed to the web.
 web:

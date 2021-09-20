@@ -17,6 +17,10 @@ type: nodejs:16
 relationships:
   database: "pg:postgresql"
 
+variables:
+  env:
+    WIKIJS_VERSION: "2.5.201"
+
 # The configuration of app when it is exposed to the web.
 web:
   commands:
@@ -50,7 +54,7 @@ hooks:
   build: |
     set -e
     ln -s config/config.yml config.yml
-    wget --quiet -c https://github.com/Requarks/wiki/releases/download/2.5.201/wiki-js.tar.gz -O - | tar -xz
+    wget --quiet -c https://github.com/Requarks/wiki/releases/download/${WIKIJS_VERSION}/wiki-js.tar.gz -O - | tar -xz
   deploy: |
     set -e
     sh .platform.deploy.sh

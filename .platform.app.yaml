@@ -17,10 +17,6 @@ type: nodejs:16
 relationships:
   database: "pg:postgresql"
 
-variables:
-  env:
-    WIKIJS_VERSION: "2.5.214"
-
 # The configuration of app when it is exposed to the web.
 web:
   commands:
@@ -58,3 +54,20 @@ hooks:
   deploy: |
     set -e
     sh .platform.deploy.sh
+
+source:
+  operations:
+    core-update:
+      command: |
+        set -e
+        sh .platform.core.update.sh
+
+crons:
+  update:
+    # Run the 'update' source operation every day at midnight.
+    spec: '0 0 * * *'
+    cmd: |
+      set -e
+      if [ "$PLATFORM_BRANCH" = "master" ]; then
+          platform source-operation:run core-update --no-wait --yes
+      fi

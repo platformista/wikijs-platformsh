@@ -49,7 +49,7 @@ mounts:
 hooks:
   build: |
     set -e
-    ln -s config.yml config/config.yml
+    ln -s config/config.yml config.yml
     wget --quiet -c https://github.com/Requarks/wiki/releases/download/2.5.201/wiki-js.tar.gz -O - | tar -xz
   deploy: |
     set -e

@@ -40,10 +40,17 @@ mounts:
   'export':
     source: local
     source_path: repo
+  'config':
+    source: local
+    source_path: config
 
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
   build: |
     set -e
-    sh .platform.build.sh
+    ln -s config.yml config/config.yml
+    wget --quiet -c https://github.com/Requarks/wiki/releases/download/2.5.201/wiki-js.tar.gz -O - | tar -xz
+  deploy: |
+    set -e
+    sh .platform.deploy.sh

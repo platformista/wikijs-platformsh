@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-wget --quiet -c https://github.com/Requarks/wiki/releases/download/2.5.201/wiki-js.tar.gz -O - | tar -xz
 
 DB_HOST=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r '.database[0].host')
 DB_PORT=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r '.database[0].port')
@@ -16,4 +15,4 @@ sed "
   s|user: wikijs|user: $DB_USERNAME|g
   s|db: wiki|db: $DB_DATABASE|g
   s|bindIP: 0.0.0.0|bindIP: 127.0.0.1|g
-  " config.sample.yml > config.yml
+  " config.sample.yml > config/config.yml

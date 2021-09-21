@@ -27,7 +27,7 @@ platform source-operation:run core-update
 
 (or you use the `-p` and `-e` switches if you are running the command from outside the checkout of the project)
 
-It's also set up to run every day at midnight: 
+It's also [set up to run every day at midnight](https://github.com/vincenzo/wikijs-platformsh/blob/master/.platform.app.yaml#L65-L73): 
 
 ```yaml
 crons:

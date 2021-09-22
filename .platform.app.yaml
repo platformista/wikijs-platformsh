@@ -49,9 +49,7 @@ mounts:
 hooks:
   build: |
     set -e
-    curl -sS https://platform.sh/cli/installer | php
-    ln -s config/config.yml config.yml
-    wget --quiet -c https://github.com/Requarks/wiki/releases/download/$(cat .version)/wiki-js.tar.gz -O - | tar -xz
+    sh .platform.build.sh
   deploy: |
     set -e
     sh .platform.deploy.sh

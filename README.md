@@ -41,6 +41,12 @@ crons:
       fi
 ```
 
+**Important**: for the above cron job to work, you must [set the `PLATFORMSH_CLI_TOKEN` environment variable](https://docs.platform.sh/development/cli/api-tokens.html#on-a-platformsh-environment) to a [valid Platform.sh token](https://docs.platform.sh/development/cli/api-tokens.html#get-a-token), e.g.
+
+```bash
+platform variable:create -e master --level environment --name env:PLATFORMSH_CLI_TOKEN --sensitive true --inheritable false  --visible-build false --value '<YOUR_API_TOKEN>'
+```
+
 ## Local development with Lando
 
 [Lando](https://lando.dev/) vastly simplifies local development and DevOps, and it is Platform.sh’s recommended local development tool, as Lando now includes direct support for Platform.sh projects.

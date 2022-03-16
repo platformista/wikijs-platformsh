@@ -5,6 +5,7 @@
 # Wiki.js for Platform.sh
 
 This template provides a basic [Wiki.js](https://js.wiki/) set-up.  It comes pre-configured to use PostgreSQL. It is intended for you to use as a starting point and modify for your own needs.
+Please note that by default the deployed Wiki.js instance [will be public](https://github.com/Requarks/wiki/issues/3034).
 
 ## Features
 
